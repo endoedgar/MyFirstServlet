@@ -5,8 +5,16 @@
   	<servlet-name>RandomServletName</servlet-name>
   	<servlet-class>net.endoedgar.MyFirstServlet</servlet-class>
   </servlet>
+   <servlet>
+  	<servlet-name>RandomServletName2</servlet-name>
+  	<servlet-class>net.endoedgar.MyOtherServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RandomServletName</servlet-name>
   	<url-pattern>/MyFirstServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RandomServletName2</servlet-name>
+  	<url-pattern>/MyOtherServlet</url-pattern>
   </servlet-mapping>
 </web-app>
