@@ -3,11 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <title>MyOtherServlet</title>
+
+<script>
+	var MyFormSendingModule = (function() {
+		'use strict';
+		
+		var _nome = null;
+		var _error = null;
+		
+		function _setNome(nome) {
+			_nome = nome;
+		}
+		
+		function _checkErrors() {
+			_error = null;
+			if(_nome == null)
+				_error = "Name is undefined"
+			else if(_nome.length <= 0)
+				_error = "Name length is invalid";
+			
+			return _error == null;
+		};
+		
+		function _validate() {
+			if(!_checkErrors()) {
+				alert(_error);
+				return false;
+			}
+			return true;
+		};
+	
+		return {
+			setNome: _setNome,
+			validate: _validate
+		}
+	})();
+	
+	function sendFormFunction() {
+		var nomeElem = document.getElementById("nome");
+		MyFormSendingModule.setNome(nomeElem.value);
+		return MyFormSendingModule.validate();
+	}
+</script>
+
 </head>
 <body>
 	<h1>Please, type in your name:</h1>
-	<form action="MyOtherServlet" method="POST">
-		Name: <input type="text" name="nome" /><br/>
+	<form action="MyOtherServlet" method="POST" onsubmit="return sendFormFunction();">
+		Name: <input type="text" name="nome" id="nome" /><br/>
 		<input type="submit" value="Send" />
 	</form>
 </body>
